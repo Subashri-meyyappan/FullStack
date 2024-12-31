@@ -1,11 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subashri</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<h1><center>Form Validation</center></h1>
+<style>
+    body {
+        background-color: rgb(236, 229, 229);
+        font-family: Arial, sans-serif;
+        color: rgb(0, 0, 0);
+    }
+    .container {
+        border: 1px solid black;
+        margin: 10px auto;
+        padding: 15px;
+        max-width: 600px;
+        box-shadow: 10px 10px 0 hsla(0, 0%, 20%, 0.5);
+        background-color: #fff;
+    }
+    .error {
+        font-size: 0.8em;
+        color: red;
+    }
+</style>
 </head>
 <body>
-    <h1>Welcome!</h1>
+<div class="container">
+    <form id="registerform">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age">
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <br><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male"> Male
+        <input type="radio" id="female" name="gender" value="female"> Female
+        <br><br>
+
+        <label for="language">Language Known:</label>
+        <select id="language" name="language">
+            <option value="" disabled selected>-- Select --</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+        </select>
+        <br><br>
+
+        <label for="area">Area of Interest:</label>
+        <input type="checkbox" id="area_cpp" name="area" value="c++"> C++
+        <input type="checkbox" id="area_c" name="area" value="c"> C
+        <input type="checkbox" id="area_web" name="area" value="web_technology"> Web Technology
+        <input type="checkbox" id="area_js" name="area" value="javascript"> JavaScript
+        <br><br>
+
+        <div id="errorcorrection"></div>
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+</div>
+
+<script>
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const language = document.getElementById('language').value;
+
+    let errors = '';
+
+    if (!name) {
+        errors += 'Name is required.<br>';
+    }
+    if (!age || isNaN(age) || age <= 0) {
+        errors += 'Valid age is required.<br>';
+    }
+    if (!email.includes('@')) {
+        errors += 'Valid email is required.<br>';
+    }
+    if (password.length < 6) {
+        errors += 'Password must be at least 6 characters long.<br>';
+    }
+    if (!gender) {
+        errors += 'Gender selection is required.<br>';
+    }
+    if (!language) {
+        errors += 'Please select a language.<br>';
+    }
+
+    const errorDiv = document.getElementById('errorcorrection');
+    if (errors) {
+        errorDiv.innerHTML = `<div class="error">${errors}</div>`;
+    } else {
+        errorDiv.innerHTML = '<div class="error">Form submitted successfully!</div>';
+    }
+}
+</script>
 </body>
 </html>

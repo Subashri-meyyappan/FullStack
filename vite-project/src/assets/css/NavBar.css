@@ -1,0 +1,20 @@
+.box-model {
+    width: 152px; /* Increased content width */
+    height: auto; /* Adjust height based on content */
+    padding: 5px; /* Space inside the box */
+    margin: 20px auto; /* Center align with vertical spacing */
+    border: 3px solid #6921a4; /* Bright and bold border */
+    border-radius: 10px; /* Rounded corners */
+    background: linear-gradient(135deg, #85568b, #bbdefb); /* Smooth gradient background */
+    box-shadow: 0 8px 15px rgba(17, 1, 34, 0.16); /* Elegant shadow for depth */
+    font-family: 'Arial', sans-serif; /* Modern font */
+    color: #160219; /* Text color */
+    text-align: center; /* Center the text inside */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+
+#idSEg{
+    text-align: center;
+
+}
